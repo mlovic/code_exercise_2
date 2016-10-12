@@ -1,0 +1,138 @@
+@import "susy";
+@import "gallery";
+@import "settings";
+
+@import 'https://fonts.googleapis.com/css?family=Lato';
+
+* { 
+  font-family: Lato; 
+  overflow-x: hidden; 
+}
+
+h1 { 
+  font-weight: normal; 
+  color: #222222;
+  font-size: 1.4em;
+}
+
+li {
+  list-style-type: none;
+  margin: 0px;
+  display: block;
+}
+
+.container {
+  padding: 0 20px;
+}
+
+nav { 
+  @include span(100%); 
+  height: 60px;
+  background-color: $gray-medium;
+  text-align: left;
+
+  // MOBILE
+  @media only screen and (max-width: $mobile-max) {
+    li { margin: 5px; }
+    .container {
+      position: absolute;
+      right: -200px;
+      width: 275px;
+      height: 100%;
+    }
+    #menu {
+      right: 0px;
+      position: absolute;
+      background-color: $gray-medium;
+      width: 200px;
+      height: 100%;
+    }
+    #menu-icon { 
+      position: absolute;
+      width: 50px;
+      top: 5px;
+      right: 215px;
+    }
+  }
+
+  // TABLET + DESKTOP
+  @include susy-breakpoint($tablet-portrait) {
+    .container {
+      @include layout(7 .0 1280px);
+      @include container();
+    }
+
+    #menu {
+      display: inline; 
+      width: 100%;
+    }
+
+    #menu-icon { display: none; }
+
+    ul { padding-left: 0px }
+
+    li { 
+      @include span(1 of 7); 
+    }
+  }
+}
+
+#top-box {
+  @include span(100%); 
+  .container {
+    padding: 40px 20px;
+    @include container(); 
+  }
+  text-align: center;
+
+  button {
+    margin: 0, auto; 
+    font-size: 1.4em;
+    margin-top: 30px;
+    height: 65px;
+    width: 80%;
+    background-color: $gray-medium;
+    color: white;
+  }
+
+  p { 
+    color: $gray-medium; 
+    margin-top: 0;
+  }
+
+  @include susy-breakpoint($tablet-portrait, 4) {
+    text-align: left;
+
+    h1 { 
+      font-size: 2em; 
+      margin-bottom: 0;
+    }
+
+    button { 
+      margin: 5px; 
+      width: 300px;
+    }
+    padding: 60px 0px;
+    background-color: $gray-light;
+  }
+}
+
+footer {
+  @include span(100%); 
+  background-color: $gray-dark;
+  min-height: 100px;
+  white-space: normal;
+  ul {
+    padding: 0;
+  }
+  .container {
+    li { 
+      display: inline-block;
+      text-align: center;
+      width: 150px;
+    }
+    @include susy-breakpoint($tablet-landscape) {
+      @include container(1080px static center); 
+    }
+  }
+}

@@ -1,0 +1,13 @@
+$tablet-portrait: 768px;
+$mobile-max: ($tablet-portrait - 1);
+$tablet-landscape: 1024px;
+$desktop: 1280px;
+
+$gray-light: #eee; 
+$gray-medium: #d3d3d3;
+$gray-dark: #808080;
+
+$susy: (
+  container: 80em,
+);
+

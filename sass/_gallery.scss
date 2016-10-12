@@ -1,0 +1,63 @@
+@import "susy";
+@import "settings";
+
+$box-size: 200px;
+
+$susy-static: (
+  math: static,
+  column-width: $box-size,
+  gutters: 0.1,
+  container: auto
+);
+
+@mixin static-gallery($boxes-per-line) {
+  @include container($boxes-per-line);
+  .gallery-item {
+    margin-bottom: gutter();
+    @include gallery(1 of $boxes-per-line);
+  }
+}
+
+#content {
+  @include span(100%);
+}
+
+#gallery {
+  min-height: 600px;
+  padding-bottom: 40px;
+  padding-top: 20px;
+
+  .gallery-item {
+    background-color: $gray-light;
+  }
+
+  @media only screen and (max-width: $mobile-max) {
+    @include layout(2 0.02);
+    @include container();
+    .gallery-item {
+      margin-bottom: gutter(2);
+      padding-bottom: span(1 of 2); // makes each div square
+      @include gallery(1 of 2);
+    }
+  }
+
+  @include susy-breakpoint($tablet-portrait) {
+    margin-top: 20px;
+    .gallery-item {
+      height: $box-size;
+    }
+    @include layout($susy-static);
+  }
+
+  @include susy-breakpoint($tablet-portrait ($tablet-landscape - 1)) {
+    @include static-gallery(3);
+  }
+
+  @include susy-breakpoint($tablet-landscape ($desktop - 1)) {
+    @include static-gallery(4);
+  }
+
+  @include susy-breakpoint($desktop) {
+    @include static-gallery(5);
+  }
+}
