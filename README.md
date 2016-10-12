@@ -1,3 +1,3 @@
 Build with:
 
-    sass sass/main.scss:style.css
+    sass -r susy sass/main.scss:style.css
